@@ -1,3 +1,17 @@
 https://cse-341-project1-dvlv.onrender.com/contacts
 
+### By ID
+https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719
 
+### Create Contact
+POST https://cse-341-project1-dvlv.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "example@test.com",
+  "favoriteColor": "blue",
+  "birthdate": "1990-01-01"
+
+}
