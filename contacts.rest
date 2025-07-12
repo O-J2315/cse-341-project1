@@ -1,7 +1,16 @@
+
+### Contact API Endpoints
+### Get All Contacts locally
+GET http://localhost:3000/contacts
+
+### Get All Contacts
 https://cse-341-project1-dvlv.onrender.com/contacts
 
 ### By ID
 https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719
+
+### Get Contact by ID locally
+GET http://localhost:3000/contacts/68681b0392b324cdb6dc5719
 
 ### Create Contact
 POST https://cse-341-project1-dvlv.onrender.com/contacts HTTP/1.1
@@ -12,7 +21,20 @@ Content-Type: application/json
   "lastName": "Hdz",
   "email": "example@test.com",
   "favoriteColor": "blue",
-  "birthday": "05/26/2004"
+  "birthdate": "05/26/2004"
+
+}
+
+### Create contact locally
+POST http://localhost:3000/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Odeth",
+  "lastName": "Hdz",
+  "email": "example@test.com",
+  "favoriteColor": "blue",
+  "birthdate": "05/26/2004"
 
 }
 
@@ -25,9 +47,25 @@ Content-Type: application/json
   "lastName": "Doe",
   "email": "example@test.com",
   "favoriteColor": "blue",
-  "birthday": "1990-01-01"
+  "birthdate": "1990-01-01"
+
+}
+
+### Update Contact locally
+PUT http://localhost:3000/contacts/6871e0923a4188956a1c377a
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "example@test.com",
+  "favoriteColor": "blue",
+  "birthdate": "1990-01-01"
 
 }
 
 ### Delete Contact
 DELETE https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719
+
+### Delete Contact locally
+DELETE http://localhost:3000/contacts/6871e0653a4188956a1c3778

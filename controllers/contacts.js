@@ -47,8 +47,8 @@ const createContact = async (req, res) => {
   const contactId = new ObjectId(req.params.id); // Generate a new ObjectId for the contact
 
   const contact = {
-    name: req.body.name,
-    lastname: req.body.lastname,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     favoriteColor: req.body.favoriteColor,
     birthdate: req.body.birthdate,
@@ -74,8 +74,8 @@ const updateContactById = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
 
   const updatedContact = {
-    name: req.body.name,
-    lastname: req.body.lastname,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     favoriteColor: req.body.favoriteColor,
     birthdate: req.body.birthdate,
