@@ -2,16 +2,18 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Project 1 for CSE 341",
-    "version": "1.0.0"
+    "description": "Contacts API",
+    "version": "1.2.1"
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/": {
       "get": {
-        "description": "Welcome to the API",
+        "description": "base endpoint",
         "responses": {
           "200": {
             "description": "OK"
@@ -19,23 +21,61 @@
         }
       }
     },
-    "/contacts": {
+    "/contacts/": {
       "get": {
-        "description": "Get all contacts",
-        "responses": {
-          "default": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/contacts/contacts": {
-      "get": {
-        "description": "Returns all contacts",
-        "produces": ["application/json"],
+        "description": "Retrieve all contacts",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Oops something went wrong"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new contact",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Doe"
+                },
+                "email": {
+                  "example": "test@email.com"
+                },
+                "favoriteColor": {
+                  "example": "blue"
+                },
+                "birthdate": {
+                  "example": "02/14/1990"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact successfully created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Oops something went wrong"
           },
           "500": {
             "description": "Internal Server Error"
@@ -45,8 +85,10 @@
     },
     "/contacts/{id}": {
       "get": {
-        "description": "Returns a contact by ID",
-        "produces": ["application/json"],
+        "description": "Get a contact by ID",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -57,7 +99,78 @@
         ],
         "responses": {
           "200": {
-            "description": "OK, contact found"
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Contact not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a contact by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "Mary"
+                },
+                "lastName": {
+                  "example": "Smith"
+                },
+                "email": {
+                  "example": "test@email.com"
+                },
+                "favoriteColor": {
+                  "example": "red"
+                },
+                "birthdate": {
+                  "example": "01/01/1990"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact successfully updated"
+          },
+          "404": {
+            "description": "No contact found with that ID"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a contact by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
