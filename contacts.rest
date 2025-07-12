@@ -4,14 +4,30 @@ https://cse-341-project1-dvlv.onrender.com/contacts
 https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719
 
 ### Create Contact
-POST https://cse-341-project1-dvlv.onrender.com/contacts
+POST https://cse-341-project1-dvlv.onrender.com/contacts HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "John",
-  "lastname": "Doe",
+  "firstName": "Odeth",
+  "lastName": "Hdz",
   "email": "example@test.com",
   "favoriteColor": "blue",
-  "birthdate": "1990-01-01"
+  "birthday": "05/26/2004"
 
 }
+
+### Update Contact
+PUT https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "example@test.com",
+  "favoriteColor": "blue",
+  "birthday": "1990-01-01"
+
+}
+
+### Delete Contact
+DELETE https://cse-341-project1-dvlv.onrender.com/contacts/68681b0392b324cdb6dc5719

@@ -6,7 +6,6 @@ const app = express();
 
 //Data base
 const mongodb = require("./db/connection");
-
 mongodb.initDb((err) => {
   if (err) {
     console.error(err);
@@ -21,11 +20,9 @@ mongodb.initDb((err) => {
 
 const port = process.env.PORT || 3000;
 
-app.use("/", require("./routes"));
 app.use(bodyParser.json());
+app.use("/", require("./routes"));
 
-const contactsRoutes = require("./routes/contacts");
-app.use("/contacts", contactsRoutes); // ✅ must be mounted at /contacts
 
 // Swagger setup
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
