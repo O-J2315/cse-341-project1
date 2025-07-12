@@ -5,5 +5,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/contacts", require("./contacts"));
+// Swagger setup
+router.use("/api-docs", require("./swagger"));
 
 module.exports = router;

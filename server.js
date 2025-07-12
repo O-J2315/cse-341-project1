@@ -1,6 +1,4 @@
 const express = require("express");
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger-output.json");
 const bodyParser = require("body-parser");
 const app = express();
 
@@ -21,8 +19,20 @@ mongodb.initDb((err) => {
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+// Middleware to handle CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Z-Key",
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
+
 app.use("/", require("./routes"));
 
 
-// Swagger setup
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
